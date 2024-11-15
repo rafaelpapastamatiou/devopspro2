@@ -1,0 +1,17 @@
+services:
+  app:
+    # image: compose-app-image-example # Set the name of the built image in the Dockerfile
+    build: # Build the image using the Dockerfile in the current directory
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+    depends_on:
+      - postgres # Wait for the postgres service to be ready before starting the app service
+    environment:
+      DB_USERNAME: ${POSTGRES_USER}
+      DB_PASSWORD: ${POSTGRES_PASSWORD}
+      DB_DATABASE: ${POSTGRES_DB:-kubedevnews} # Environment variable with default value ( after :- )
+      DB_HOST: postgres

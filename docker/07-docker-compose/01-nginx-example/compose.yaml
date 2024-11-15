@@ -1,0 +1,27 @@
+# Start the services with the following command:
+# docker compose up
+
+# With -d flag to run in detached mode
+# docker compose up -d
+
+# Stop the services with the following command:
+# docker compose stop
+
+# Remove the services with the following command:
+# docker compose down
+
+services:
+  nginx1:
+    # container_name: nginx1 # Override the default container name
+    image: nginx:1.27.2-alpine
+    ports:
+      - "8080:80"
+    # command: # Override the default command
+    #   - echo
+    #   - Hello World
+
+  nginx2:
+    # container_name: nginx2
+    image: nginx:1.27.2-alpine
+    ports:
+      - "8081:80"

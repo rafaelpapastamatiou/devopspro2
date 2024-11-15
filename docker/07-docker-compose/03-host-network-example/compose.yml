@@ -1,0 +1,9 @@
+services:
+  nginx:
+    image: nginx:1.27.2-alpine
+    network_mode: host
+
+  curl:
+    image: nginx
+    extra_hosts:
+      nginx-example.com: 192.168.100.16 # Add host mapping to nginx service

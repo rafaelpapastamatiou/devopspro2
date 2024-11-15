@@ -1,0 +1,13 @@
+services:
+  app: 
+    extends: # Extend the services configuration from another file
+      file: ./app.compose.yml
+      service: app
+    # image: node:22-alpine # Override config from the extended file
+
+include:
+  - ./postgres.compose.yml # Include another compose file
+
+networks:
+  app-network:
+    driver: bridge

@@ -1,0 +1,9 @@
+# Merge the configurations of the base compose file with the configurations of this file
+
+# Run using the following command:
+# docker compose -f compose.yml -f compose.merge.yml up
+
+services:
+  postgres:
+    ports:
+      - "5433:5432" # Add a new port mapping when merging the services configurations
