@@ -1,0 +1,22 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:3000"
+    restart: always # Define restart policy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+      # disable: true # Disable healthcheck if present in the image
+    # cpus: 6 # Define CPU limit
+    # memswap_limit: 512M # Define memory limit
+    deploy:
+      resources:
+        limits:
+          cpus: "2"
+          memory: 512M
