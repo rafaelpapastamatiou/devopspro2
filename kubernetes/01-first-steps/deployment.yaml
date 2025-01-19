@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+  name: my-deployment
+
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: web-color
+  template:
+    metadata:
+      labels:
+        app: web-color
+        version: green
+    spec:
+      containers:
+        - name: my-container
+          image: kubedevio/web-color:green
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
